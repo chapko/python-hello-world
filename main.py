@@ -1,11 +1,12 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from os import environ
 
-hostName = "localhost"
+hostName = "0.0.0.0"
 serverPort = int(environ.get("PORT", "8080"))
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
+        print(f"GET {self.path}")
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
